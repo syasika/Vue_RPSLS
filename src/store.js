@@ -23,6 +23,12 @@ export default new Vuex.Store({
       }
 
       state.gameTotal++;
+    },
+    RESET_SCORES(state) {
+      state.computerScore = 0;
+      state.playerScore = 0;
+      state.drawTotal = 0;
+      state.gameTotal = 0;
     }
   },
   getters: {
@@ -34,6 +40,9 @@ export default new Vuex.Store({
   actions: {
     UPDATE_SCORE: async (context, computerWin, isDraw) => {
       context.commit("CHANGE_SCORES", computerWin, isDraw);
+    },
+    RESET_SCORE: async context => {
+      context.commit("RESET_SCORES");
     }
   }
 });
